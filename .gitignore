@@ -1,3 +1,1 @@
 node_modules  
-
-pnpx @biomejs/biome format --write
