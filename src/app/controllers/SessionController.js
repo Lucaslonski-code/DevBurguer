@@ -14,7 +14,7 @@ class SessionController {
     });
 
     const emailOrPasswordIncorrect = () => {
-        return  response
+      return response
         .status(400)
         .json({ error: 'Email or password incorrect' });
     };
@@ -32,19 +32,22 @@ class SessionController {
       return emailOrPasswordIncorrect();
     }
 
-    const isPasswordCorrect = await bcrypt.compare(password, existingUser.password_hash);
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      existingUser.password_hash,
+    );
 
     if (!isPasswordCorrect) {
       return emailOrPasswordIncorrect();
     }
 
     // Lógica para autenticar o usuário e criar uma sessão
-    return response.status(200).json({ 
-        id: existingUser.id,
-        name: existingUser.name,
-        email: existingUser.email,
-        admin: existingUser.admin
-     });
+    return response.status(200).json({
+      id: existingUser.id,
+      name: existingUser.name,
+      email: existingUser.email,
+      admin: existingUser.admin,
+    });
   }
 }
 
