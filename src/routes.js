@@ -17,7 +17,9 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 routes.post('/products', adminAuthMiddleware, upload.single('file'), ProductController.store);
-routes.get('/products', ProductController.index);
+routes.get('/products', adminAuthMiddleware, ProductController.index);
+
+routes.put('/products/:id', adminAuthMiddleware, upload.single('file'), ProductController.update);
 
 routes.post('/categories', adminAuthMiddleware, CategoryController.store);
 routes.get('/categories', adminAuthMiddleware, CategoryController.index);
