@@ -13,15 +13,15 @@ const routes = new Router();
 const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
-routes.post('/sessions', SessionController.store);
+routes.post('/sessions', SessionController.store); 
 
 routes.use(authMiddleware);
 routes.post('/products', adminAuthMiddleware, upload.single('file'), ProductController.store);
 routes.get('/products', adminAuthMiddleware, ProductController.index);
-
 routes.put('/products/:id', adminAuthMiddleware, upload.single('file'), ProductController.update);
 
-routes.post('/categories', adminAuthMiddleware, CategoryController.store);
+routes.post('/categories', adminAuthMiddleware, upload.single('file'), CategoryController.store);
 routes.get('/categories', adminAuthMiddleware, CategoryController.index);
+/* routes.put('/categories/:id', adminAuthMiddleware, upload.single('file'), CategoryController.update); */
 
 export default routes;
