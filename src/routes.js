@@ -22,6 +22,7 @@ routes.put('/products/:id', adminAuthMiddleware, upload.single('file'), ProductC
 
 routes.post('/categories', adminAuthMiddleware, upload.single('file'), CategoryController.store);
 routes.get('/categories', adminAuthMiddleware, CategoryController.index);
-/* routes.put('/categories/:id', adminAuthMiddleware, upload.single('file'), CategoryController.update); */
+routes.put('/categories/:id', adminAuthMiddleware, upload.single('file'), CategoryController.update);
+routes.delete('/categories/:id', adminAuthMiddleware, CategoryController.delete);
 
 export default routes;
