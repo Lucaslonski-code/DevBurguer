@@ -1,4 +1,3 @@
-
 const adminAuthMiddleware = (request, response, next) => {
 
     const isUserAdmin = request.userIsAdmin;

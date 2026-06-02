@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import authConfig from '../config/auth.js';
+import authConfig from '../../config/auth.js';
 
 const authMiddleware = (request, response, next) => {
 
@@ -20,6 +20,7 @@ const authMiddleware = (request, response, next) => {
 
             console.log(decoded);
             request.userId = decoded.id;
+            request.userName = decoded.name;
             request.userIsAdmin = decoded.admin;
         });
     } catch (_error) {
